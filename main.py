@@ -2,6 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routes.user_routes import router as user_router
 from routes.ai_response_routes import router as ai_response_router
+from routes.search_routes import router as search_router
 from db import get_db,DATABASE_URL
 from sqlalchemy import create_engine
 import os
@@ -19,6 +20,7 @@ app.add_middleware(
 
 app.include_router(user_router)
 app.include_router(ai_response_router)
+app.include_router(search_router)
 #to create database
 
 engine=create_engine(DATABASE_URL)
